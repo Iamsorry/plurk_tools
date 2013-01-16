@@ -1,0 +1,13 @@
+it's a mass
+===========
+
+python
+------
+* top_responser.py
+Calculate who responses most in your plurks.
+* top_responser.cgi
+CGI version of above.
+* deep_search.py
+Help Jerry to find the plurk that he fought with KKBOX employee.
+* who_can_see.py
+Help Kenneth to list the real users allowed in private plurks.
