@@ -1,8 +1,10 @@
 it's a mass
 ===========
 
-python
+Python
 ------
+* plurklib.py
+Required module for plurk related tools below.
 * top_responser.py
 Calculate who responses most in your plurks.
 * top_responser.cgi
@@ -11,3 +13,13 @@ CGI version of above.
 Help Jerry to find the plurk that he fought with KKBOX employee.
 * who_can_see.py
 Help Kenneth to list the real users allowed in private plurks.
+
+# how to use these tools #
+
+1. Get an api key from http://www.plurk.com/API/1.0/#key
+2. Edit plurklib.py, set the api key in 'api_key'
+3. Set your plurk account and password in 'accounts'. It's a dictionary so you can have several pairs.
+4. Edit the tool which you want to run, say 'who_can_see.py', Set your plurk account for the 'plurklib.login' call.
+5. After a successful login, the tool will store the session cookie in 'plurk_session.your_account.txt'
+
+I am new to Python. Please kindly leave your advices to http://www.plurk.com/sorry . Thanks.
