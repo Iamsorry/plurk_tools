@@ -7,6 +7,7 @@ import time
 
 timezone_offset = 60 * 60 * 8	# CST = GMT +8 hours
 target_count = 5
+max_output = 5
 
 def ctime2iso(ctime):
 	tm = time.strptime(ctime, '%a, %d %b %Y %H:%M:%S %Z')
@@ -40,14 +41,13 @@ while len(plurks) < target_count:
 
 # aggregate
 for plurk in plurks:
-	print plurk['content_raw'].encode('utf-8')
 	suspects = {}
-	max_suspect = 0
 	obj = plurklib.getResponse(plurk['plurk_id'])
 	owners.update(obj['friends'])
 	responses = obj['responses']
+	print '%s (%d)' % (plurk['content_raw'].encode('utf-8'), len(responses))
 	if len(responses) == 0:
-		print '\t' + '(no reponser)'
+		print '\t' + '(no reponse)'
 		continue
 	for response in responses:
 		user_id = response['user_id']
@@ -55,12 +55,16 @@ for plurk in plurks:
 			suspects[user_id] += 1
 		else:
 			suspects[user_id] = 1
-		if suspects[user_id] > max_suspect:
-			max_suspect = suspects[user_id]
-	for suspect, appearance in suspects.iteritems():
-		if appearance == max_suspect:
-			suspect_info = owners[str(suspect)]
-			display_name = suspect_info.get('display_name', suspect_info['nick_name'])
-			if display_name is None or display_name == '':
-				display_name = suspect_info['nick_name']
-			print ('\t%s (%d:%s)' % (display_name, suspect, suspect_info['nick_name'])).encode('utf-8')
+
+	ordered = sorted(((v, k) for (k, v) in suspects.items()), reverse = True)
+	output = 0
+	for (appearance, suspect) in ordered:
+		if output > max_output:
+			break
+		suspect_info = owners[str(suspect)]
+		display_name = suspect_info.get('display_name', suspect_info['nick_name'])
+		if display_name is None or display_name == '':
+			display_name = suspect_info['nick_name']
+		#print ('\t%s (%d:%s)' % (display_name, suspect, suspect_info['nick_name'])).encode('utf-8')
+		print ('\t%s (%d)' % (display_name, appearance)).encode('utf-8')
+		output += 1;
