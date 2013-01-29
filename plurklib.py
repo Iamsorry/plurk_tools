@@ -80,6 +80,15 @@ def responseAdd(plurk_id, qualifier, content):
 		encode(args))
 	return json2obj(fp.read())
 
+def getFriendsByOffset(user_id, offset, limit):
+	args = {'user_id': user_id,
+		'offset': offset,
+		'limit': limit,
+		'api_key': api_key}
+	fp = session_opener.open(get_api_url('/FriendsFans/getFriendsByOffset'),
+		encode(args))
+	return json2obj(fp.read())
+
 def uploadPicture(imgp):
 	uploader = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar), MultipartPostHandler.MultipartPostHandler)
 	args = {'api_key': api_key,

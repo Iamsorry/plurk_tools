@@ -13,6 +13,8 @@ CGI version of above.
 Help Jerry to find the plurk that he fought with KKBOX employee.
 * who_can_see.py
 Help Kenneth to list the real users allowed in private plurks.
+* guess_anonymous.py
+Guess the owner of anonymous plurks.
 
 # how to use these tools #
 
