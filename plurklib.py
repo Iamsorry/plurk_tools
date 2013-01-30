@@ -17,6 +17,25 @@ accounts = {
 	'account3': 'password3',
 }
 
+robots = {
+	18757: 'plurkbuddy',
+	4634727: '小籤籤',
+	3436759: 'PlurkBuzz',
+	4708688: '淺草籤',
+	5993803: '掰噗',
+	3212350: 'Citytalk城市通',
+	4299622: '邦尼妹妹',
+	4708232: '小歌手',
+	6433462: 'Plurk分析工具',
+	7753029: '卡馬警衛',
+	4799740: '女僕小C',
+	4952912: '執事Jin Cendrars',
+	5410409: '轉噗機',
+	5211437: '預報美眉',
+	4579330: '肥肥夫人',
+	4009327: '布魯斯推推',
+}
+
 def json2obj(jsonstr):
 	return json.loads(jsonstr
 		.replace('\\u', '#UNI_ESC#')
