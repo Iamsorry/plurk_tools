@@ -53,6 +53,6 @@ for plurk in plurks:
 				owners[guest_id] = obj['user_info']
 			guest = owners[guest_id]
 			display_name = guest.get('display_name', guest['nick_name'])
-			if display_name == '':
+			if display_name is None or display_name == '':
 				display_name = guest['nick_name']
 			print '\t' + display_name

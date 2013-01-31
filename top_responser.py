@@ -61,7 +61,7 @@ for (resp_count, user_id) in summary:
 		owners.update(obj['user_info'])
 	responser = owners[user_id_str]
 	display_name = responser.get('display_name', responser['nick_name'])
-	if display_name == '':
+	if display_name is None or display_name == '':
 			display_name = responser['nick_name']
 	print ('%d times from %s (%d)' % (resp_count, display_name, user_id)).encode('utf-8')
 
