@@ -3,15 +3,9 @@
 # -*- coding: utf-8 -*-
 
 import plurklib
-import time
 
-timezone_offset = 60 * 60 * 8	# CST = GMT +8 hours
 target_count = 5
 max_output = 5
-
-def ctime2iso(ctime):
-	tm = time.strptime(ctime, '%a, %d %b %Y %H:%M:%S %Z')
-	return time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(int(time.mktime(tm)) + timezone_offset))
 
 obj = plurklib.login('account1')
 user_info = obj['user_info']
@@ -37,7 +31,7 @@ while len(plurks) < target_count:
 	owners.update(part_owners)
 
 	offset = part_plurks[len(part_plurks)-1]['posted']
-	offset = ctime2iso(offset)
+	offset = plurklib.ctime2iso(offset)
 
 # aggregate
 for plurk in plurks:

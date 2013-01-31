@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os.path
+import time
 import urllib, urllib2, cookielib
 import json
 import MultipartPostHandler
@@ -35,6 +36,12 @@ robots = {
 	4579330: '肥肥夫人',
 	4009327: '布魯斯推推',
 }
+
+timezone_offset = 60 * 60 * 8   # CST = GMT +8 hours
+
+def ctime2iso(ctime):
+	tm = time.strptime(ctime, '%a, %d %b %Y %H:%M:%S %Z')
+	return time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(int(time.mktime(tm)) + timezone_offset))
 
 def json2obj(jsonstr):
 	return json.loads(jsonstr

@@ -3,24 +3,18 @@
 
 import cgi
 import plurklib
-import time
 
 print 'Content-Type: text/html; charset=utf-8\n\n'
 print '<title>Top responsers</title>'
 
 form = cgi.FieldStorage()
 
-timezone_offset = 60 * 60 * 8	# CST = GMT +8 hours
 target_count = 20
 
 now_str = time.strftime('[%Y/%m/%d %H:%M:%S] ', time.localtime())
 logfile = open('plurk_topresp.log', 'a')
 logfile.write(now_str + username + '\n')
 logfile.close()
-
-def ctime2iso(ctime):
-	tm = time.strptime(ctime, '%a, %d %b %Y %H:%M:%S %Z')
-	return time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(int(time.mktime(tm)) + timezone_offset))
 
 obj = plurklib.login(username, password)
 user_info = obj['user_info']
@@ -82,7 +76,7 @@ while len(plurks) < target_count:
 	owners.update(part_owners)
 
 	offset = part_plurks[len(part_plurks)-1]['posted']
-	offset = ctime2iso(offset)
+	offset = plurklib.ctime2iso(offset)
 
 aggregate = {}
 response_count = 0
