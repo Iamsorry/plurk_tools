@@ -21,7 +21,7 @@ Guess the owner of anonymous plurks.
 1. Get an api key from http://www.plurk.com/API/1.0/#key
 2. Edit plurklib.py, set the api key in 'api_key'
 3. Set your plurk account and password in 'accounts'. It's a dictionary so you can have several pairs.
-4. Edit the tool which you want to run, say 'who_can_see.py', Set your plurk account for the 'plurklib.login' call.
+4. Run script with your account as argument. E.g., '$ ./who_can_see.py my_account'.
 5. After a successful login, the tool will store the session cookie in 'plurk_session.your_account.txt'
 
 I am new to Python. Please kindly leave your advices to http://www.plurk.com/sorry . Thanks.

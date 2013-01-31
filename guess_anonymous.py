@@ -2,12 +2,13 @@
 
 # -*- coding: utf-8 -*-
 
+import sys
 import plurklib
 
 target_count = 5
 max_output = 5
 
-obj = plurklib.login('account1')
+obj = plurklib.login(sys.argv[1])
 user_info = obj['user_info']
 print 'Login as %s (%s, id=%d, karma=%d)' % (user_info['nick_name'], user_info['display_name'], user_info['id'], user_info['karma'])
 
